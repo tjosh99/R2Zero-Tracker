@@ -1,0 +1,57 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark bg-nav-transparent py-2"
+    style="background-color: rgba(14,13,23,.8) !important;">
+    <div class="container">
+        <div class="d-flex justify-content-start align-items-center">
+            <div> <a class="navbar-brand mr-2 logo" routerLink="/user/dashboard">
+                <img src="assets/img/imgs.png">
+            </a></div>
+           
+            <div class="navbar-brand text-brand text-serif d-sm-flex flex-sm-row  justify-content-center align-items-center ">
+                <div>
+                    <small class="m-0 nav-title-covid" routerLink="/user/dashboard">COVID-19
+                        UPDATE </small>
+                </div>
+
+                <div><p class="m-0 pl-2" style="font-size: 14px; padding-top: 6px;"> As of {{dates | date}}</p></div>
+                
+            </div>
+        </div>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bottom-menu"
+            aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="bottom-menu">
+            <ul class="navbar-nav ml-auto my-0 p-0">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" aria-expanded="false" routerLink="/user/searchpatient">SEARCH PATIENTS</a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" aria-expanded="false" routerLink="/user/symptoms">SYMPTOMS</a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" aria-expanded="false" routerLink="/user/prevention">PREVENTION</a>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" aria-expanded="false" routerLink="/user/emergency">EMERGENCY
+                        HOTLINE</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ABOUT
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Privacy</a>
+                        <a class="dropdown-item" href="#">Terms and Conditions</a>
+                        <a class="dropdown-item" routerLink="/user/resources">Resources</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

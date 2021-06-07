@@ -1,0 +1,29 @@
+@media (max-width: 320px) {
+    .symptoms-breath {
+      width: 67px !important;
+      height: 67px !important;
+    }
+    .symptoms-loss {
+      width: 67px !important;
+      height: 67px !important;
+    }
+  }
+  @media (max-width: 575px) {
+    .symptoms-breath {
+      width: 107px !important;
+      height: 107px !important;
+    }
+    .symptoms-loss {
+      height: 107px !important;
+      width: 107px !important;
+    }
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+  }
+  
+  @media (min-width: 991px) and (max-width: 1200px) {
+  }
+  

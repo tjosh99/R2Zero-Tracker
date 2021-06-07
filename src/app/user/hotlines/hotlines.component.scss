@@ -1,0 +1,46 @@
+a:hover {
+  color: green;
+  text-decoration: none;
+}
+
+section {
+  padding: 50px 0px;
+  overflow: hidden;
+}
+
+@media (max-width: 320px) {
+  .card-body {
+    padding-left: 4px;
+    padding-right: 3px !important;
+  }
+}
+@media (max-width: 575px) {
+  .card-body {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .brgy-emer-hotline {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .card-body {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-body {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+  .card-body {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="container-fluid p-0 m-0 " style="background: transparent linear-gradient(180deg, #8dd815 0%, #006805 100%) 50%
+          0% no-repeat padding-box">
+    <div class="container " style="background: transparent linear-gradient(180deg, #8dd815 0%, #006805 100%) 50%
+          0% no-repeat padding-box;padding-top: 100px;">
+        <div class="text-center text-white py-4">
+            <h2 class="logo me-auto">
+                <p class="font-size-md" style="text-transform: uppercase;">Olongapo Task Force
+                    <span style="color: yellow;">COVID-19</span>
+                </p>
+            </h2>
+            <p>For inquires & information, call Olongapo COVID-19 Hotline:</p>
+            <div class="hotline-number pb-4">
+                <a href="tel:+639219077022" type="button" class="btn btn-outline-light"
+                    style="border-radius: 50px; font-weight: 600;">0921
+                    907 7022</a>
+                <a href="tel:+639777690224" type="button" class="btn btn-outline-light"
+                    style="border-radius: 50px; font-weight: 600;">0977
+                    769 0224</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container my-5 border pt-2 pb-3">
+    <h5 class="py-3 m-0" style="font-size: clamp(1.125rem, 2.5vw, 1.50rem);">Barangay Emergency Hotline</h5>
+    <div class="row justify-content-md-center" data-aos-delay="200">
+        <div class="brgy-emer-hotline brgy-emer-hotline col-lg-3 col-6 pt-4 d-flex justify-content-center  d-flex justify-content-center" *ngFor="let c of cont;">
+            <div class="card text-center" style="width: 16rem;">
+                <div class="card-body">
+                    <div>
+                        <h5 style="font-size: clamp(1rem, 2.5vw, 1.25rem);">{{c?.barangay}}</h5>
+                        <p>{{c?.brgy_capt}}</p>
+                    </div>
+                    <div class="d-flex flex-column-reverse flex-md-row justify-content-between">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg>
+                            <a href="tel:{{c?.tel_no}}" style="font-weight: 600; padding-left: 5px;">{{c?.tel_no}}</a>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-phone-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z" />
+                            </svg>
+                            <a href="tel:{{c?.cont_no}}" style="font-weight: 600;">{{c?.cont_no}}</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

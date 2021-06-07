@@ -1,0 +1,236 @@
+<link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<input type="checkbox" id="nav-toggle">
+<div class="sidebar">
+    <!-- <div class="sidebar-brand">
+            <h2><img src="../../../assets/img/imgs.png" alt="" width="" height=""><span>Tracker</span></h2>
+        </div> -->
+
+    <div class="container-fluid">
+        <div class="container d-flex justify-content-center logo-container">
+            <img class="logo" src="assets/img/R2Z-Icon2.png" alt="" width="100%" height="100%">
+        </div>
+        <div class="container d-flex justify-content-center align-items-center flex-column">
+            <h2>Covid-19</h2>
+            <h4>Olongapo City</h4>
+        </div>
+    </div>
+
+    <div class="sidebar-menu">
+        <ul style="padding-left: 0px;">
+            <li>
+                <a href="" style="text-decoration: none;" class="active" routerLink="/admin/admindashboard"
+                    routerLinkActive="active current"><span class="la la-dashboard"></span><span>Dashboard</span></a>
+            </li>
+            <li>
+                <a href="" style="text-decoration: none;" routerLink="/admin/patient/viewpatient"><span
+                        class="las la-users"></span><span class="sidebar-hover">Patients</span></a>
+            </li>
+            <li>
+                <a href="" style="text-decoration: none;" routerLink="/admin/managepatient"><span
+                        class="la la-cogs"></span><span class="sidebar-hover">Manage Patients</span></a>
+            </li>
+            <li>
+                <a href="" style="text-decoration: none;" routerLink="/admin/contact"><span
+                        class="las la-address-card"></span><span class="sidebar-hover">Manage Contacts</span></a>
+            </li>
+
+            <!-- <li>
+                    <a href="" routerLink="/admin/barangay" routerLinkActive="active current"><span class="las la-map"></span><span>Barangay</span></a>
+                </li> -->
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+
+            Dashboard
+        </h2>
+
+        <!-- <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search here"/>
+            </div> -->
+
+        <div class="logo-wrapper">
+            <h6 style="margin-right:10px">As of {{ dates | date }}</h6>
+            <img class="imgs" src="assets/img/imgs.png" width="40px" height="40px" alt="">
+              <div>
+                  <h4>R2Z Tracker</h4>
+                  <small>City Health</small>
+              </div>
+              <!-- <span class="p-0 m-0" style="border: 0; background: #fff;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img style="position: relative; left: 15px;" class="logo-bell" src="assets/img/bell.svg" alt="">
+                  <span style="position: absolute; font-size: 41%; top: 25px; right: 25px; border-radius: 55% -25%; color: #dc3545" class="badge badge-danger">1</span>
+              </span> -->
+              <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" data-toggle="modal" data-target="#edit">Confirmed</a>
+                  <a class="dropdown-item">Recovered</a>
+                  <a class="dropdown-item">Death</a>
+            </div> -->
+        </div>
+    </header>
+
+    <main>
+        <div class="cards" *ngFor="let data of city;">
+            <div class="card-single">
+                <div *ngFor="let count1 of count1">
+                    <h1 class="total">{{data.ctotal_cases}}<p class="count-total">(+{{count1.count1}})</p>
+                    </h1>
+                    <span>Total Confirmed Cases</span>
+                </div>
+                <div>
+                    <span><img class=" animated" src="assets/img/icon3.png" width="40px" height="40px" alt=""></span>
+                </div>
+            </div>
+
+            <div class="card-single" *ngFor="let count of count">
+                <div>
+                    <h1 class="recovered">{{data.crecovered_cases}}<p class="count-recovered">(+{{count.count}})</p>
+                    </h1>
+                    <span>Total # of Recoveries</span>
+                </div>
+                <div>
+                    <span><img class=" animated" src="assets/img/icon2.png" width="40px" height="40px" alt=""></span>
+                </div>
+            </div>
+
+            <div class="card-single" *ngFor="let counts of counts">
+                <div>
+                    <h1 class="death">{{data.cdeath_cases}}<p class="count-death">(+{{counts.counts}})</p>
+                    </h1>
+                    <span>Total # of Deaths</span>
+                </div>
+                <div>
+                    <span><img class=" animated" src="assets/img/icon1.png" width="40px" height="40px" alt=""></span>
+                </div>
+            </div>
+
+            <div class="card-single" style="background: #007562;">
+                <div>
+                    <h1 class="activecase" style="color: #fff !important;">{{data.cactive_cases}}</h1>
+                    <span class="text-white">Active Cases</span>
+                </div>
+                <div>
+                    <span><img class=" animated" src="assets/img/icon2.png" width="40px" height="40px" alt=""></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- <h1>{{ dates | date:'medium' }}</h1> -->
+
+        <div class="recent-grid-map">
+            <div class="projects-map">
+                <div class="card-map">
+                    <div class="card-header-map">
+                        <h3>Locate your Barangay</h3>
+
+                        <!-- <button>See all <span class="las la-arrow-right"></span></button> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="card-container">
+                            <div class="card">
+                                <div id="mapid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="recent-grid-chart">
+            <div class="projects-chart">
+                <div class="card-chart">
+                    <div class="card-header-chart">
+                        <h3>Barangay Chart</h3> -->
+
+        <!-- <button>See all <span class="las la-arrow-right"></span></button> -->
+        <!-- </div> -->
+
+        <!-- <div class="container-fluid">
+                        <div *ngIf="chart">
+                            <canvas #canvas id="canvas">{{ chart }}</canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="recent-grid-ngxchart">
+            <div class="projects-ngxchart">
+                <div class="card-ngxchart">
+                    <div class="card-header-ngxchart">
+                        <h3>Barangay Cases Percentage</h3>
+
+                        <!-- <button>See all <span class="las la-arrow-right"></span></button> -->
+                    </div>
+
+                    <div id="chartcontainer">
+                        <ngx-charts-advanced-pie-chart style="margin-left: 2rem;" [view]="view" [scheme]="colorScheme"
+                            [results]="brgypercent" [gradient]="gradient">
+                        </ngx-charts-advanced-pie-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-grid-ngxchart">
+            <div class="projects-ngxchart bg-white ">
+                <div class="card-header-ngxchart">
+                    <h3>Covid Cases Age Percentage</h3>
+                </div>
+
+                <div class="card-ngxchart d-flex justify-content-center align-items-center flex-column">
+
+                    <ngx-charts-bar-vertical style="background: #fff;" [view]="view" [scheme]="colorScheme2"
+                        [results]="agepercent" [gradient]="gradient2" [xAxis]="showXAxis" [yAxis]="showYAxis"
+                        [legend]="showLegend2" [showXAxisLabel]="showXAxisLabel">
+                    </ngx-charts-bar-vertical>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="recent-grid">
+            <div class="projects">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Barangay Cases</h3>
+                        <h6 style="margin-right:10px">As of {{ dates | date }}</h6>
+                        <!-- <button>See all <span class="las la-arrow-right"></span></button> -->
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Barangay name</td>
+                                        <td>Total</td>
+                                        <td>Recovered</td>
+                                        <td>Death</td>
+                                        <td>Active</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let b of brgy; let i = index">
+                                        <td>{{ b?.brgy_name }}</td>
+                                        <td>{{ b?.brgy_totalcases }}</td>
+                                        <td>{{ b?.brgy_recoveredcases }}</td>
+                                        <td>{{ b?.brgy_deathcases }}</td>
+                                        <td>{{ b?.brgy_activecases }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

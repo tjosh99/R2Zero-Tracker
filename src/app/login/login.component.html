@@ -1,0 +1,34 @@
+
+  <div class="container">
+
+    <div class="row justify-content-left mt-5 ml-5">
+        <div class="col-lg-5 mt-5 " style="margin:auto;">
+            <div class="card shadow-lg border-0 rounded-lg mt-4">
+                <div class="card-header"><h3 class="text-center my-4">R2Zero Tracker</h3></div>
+                <div class="card-body">
+                  <form (submit)="checkCredentials($event)" ngNativeValidate>
+                        <div class="form-group">
+                          <!-- <label class="small mb-1" >Username</label> -->
+                          <input class="form-control py-4 rounded-pill" [(ngModel)]="username" required type="text" name="username" id="username" placeholder="Username"/>
+                        </div>
+  
+                        <div class="form-group">
+                          <!-- <label class="small mb-1" >Password</label> -->
+                          <input class="form-control py-4 rounded-pill" [(ngModel)]="password" required type="password" name="password" id="password" placeholder="Password"/>
+                        </div>
+  
+                        <div class="form-group mt-4 mb-0">
+                        <button type="submit" class=" btn btn-primary rounded-pill btn-block" ><i class="fa fa-sign-in"></i>&nbsp;Login</button>
+                        </div>
+  
+                        <div class="form-group mt-4 mb-0">
+                          <a class="small" routerLink="/auth/forgot-password" ><i class="fa fa-unlock-alt"></i>&nbsp;Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="card-footer text-center">
+                    <div class="small"><a routerLink="/register">Need an account? Sign up!</a></div>
+                </div> -->
+            </div>
+        </div>
+    </div>

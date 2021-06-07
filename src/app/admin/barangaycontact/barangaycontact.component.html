@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<input type="checkbox" id="nav-toggle">
+	<div class="sidebar">
+        <!-- <div class="sidebar-brand">
+            <h2><span class="lab la-accusoft"></span> <span>Tracker</span></h2>
+        </div> -->
+
+        <div class="container-fluid">
+            <div class="container d-flex justify-content-center logo-container">
+                <img class="logo" src="assets/img/R2Z-Icon2.png" alt="" width="100%" height="100%">  
+            </div>
+            <div class="container d-flex justify-content-center align-items-center flex-column">
+                <h2>Covid-19</h2>
+                <h4>Olongapo City</h4>
+            </div>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul style="padding-left: 0px;">
+                <li>
+                    <a href="" style="text-decoration: none;" routerLink="/admin/admindashboard"><span class="la la-dashboard"></span><span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="" style="text-decoration: none;"  routerLink="/admin/patient/viewpatient"><span class="las la-users"></span><span>Patients</span></a>
+                </li>
+                <li>
+                    <a href="" style="text-decoration: none;" routerLink="/admin/managepatient"><span class="la la-cogs"></span><span  class="sidebar-hover">Manage Patients</span></a>
+                </li>
+                <li>
+                    <a href="" style="text-decoration: none;" class="active" routerLink="/admin/contact"><span class="las la-address-card"></span><span  class="sidebar-hover">Manage Contacts</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                Manage Contacts
+            </h2>
+
+            <!-- <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search here"/>
+            </div> -->
+
+            <div class="user-wrapper">
+                <h6 style="margin-right:10px">As of {{ dates | date }}</h6>
+                <img class="imgs" src="assets/img/imgs.png" width="40px" height="40px" alt="">
+                <div>
+                    <h4>R2Z Tracker</h4>
+                    <small>City Health</small>
+                </div>
+                <!-- <span class="p-0 m-0" style="border: 0; background: #fff;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img style="position: relative; left: 15px;" class="logo-bell" src="assets/img/bell.svg" alt="">
+                    <span style="position: absolute; font-size: 41%; top: 25px; right: 25px; border-radius: 55% -25%; color: #dc3545" class="badge badge-danger">1</span>
+                </span>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#edit">Confirmed</a>
+                    <a class="dropdown-item">Recovered</a>
+                    <a class="dropdown-item">Death</a>
+                </div> -->
+            </div>
+        </header>
+
+        <main>
+            <div class="card-header">
+                <h3>Barangay Information</h3>
+                <!-- <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">Add Contact</button> -->
+                <!-- <button class="button is-primary" (click)="selectItem()">Choose</button><br> -->
+                <!-- <button  class="btn-add" data-toggle="modal" data-target="#add" (click)="selectItem()"><i class="fa fa-edit"></i>Add Patient</button> -->
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="term" class = "form-control float-end" placeholder="Search Patient">
+                </div>
+                <div class="table-responsive">
+                    <table width="100%" class="content-table">
+                        <thead>
+                            <tr>
+                                <th>Contact ID</th>
+                                <th>Barangay</th>
+                                <th>Barangay Captain</th>
+                                <th>Telephone No.</th>
+                                <th>Contact No.</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of cont | filter:term; let i = index">
+                                <td>{{ c?.cont_id }}</td>
+                                <td>{{ c?.barangay }}</td>
+                                <td>{{ c?.brgy_capt }}</td>
+                                <td>{{ c?.tel_no }}</td>
+                                <td>{{ c?.cont_no }}</td>
+                                <td style="display: flex; justify-content: space-between;"> 
+                                    <!-- <button  class="btn-recover" (click)="showedit(i)" data-toggle="modal" data-target="#edit">Update</button>
+                                    <button  class="btn-death" (click)="deletepatient(i)">Delete</button> -->
+                                    <div class="dropdown dropleft">
+                                        <button class="btn"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                            </svg>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" (click)="showedit(i)" data-toggle="modal" data-target="#edit">Update</a>
+                                        <a class="dropdown-item" (click)="deletepatient(i)">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <div style="text-align: center;">
+                        <pagination-controls class="ngx-pagination b-0"  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="pages = $event"></pagination-controls>
+                    </div> -->
+                </div>
+            </div>
+            
+
+            <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Barangay Contact - Information</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="cont_id">Contact ID: &nbsp;</label>
+                            <input [(ngModel)]="cont_id" type="text" id="cont_id" name = "cont_id" class = "form-control" disabled>
+                            <label for="barangay">Barangay: &nbsp; </label>
+                            <input [(ngModel)]="barangay" type="text" id="barangay" name = "barangay" class = "form-control" disabled>
+                            <label for="brgy_capt">Barangay Captain: &nbsp; </label>
+                            <input [(ngModel)]="brgy_capt" type="text" id="brgy_capt" name = "brgy_capt" class = "form-control">
+                            <label for="tel_no">Telephone No.: &nbsp; </label>
+                            <input [(ngModel)]="tel_no" type="text" id="tel_no" name = "tel_no" class = "form-control">  
+                            <label for="cont_no">Contact No.: &nbsp;</label>
+                            <input [(ngModel)]="cont_no" type="text" id="cont_no" name = "cont_no" class = "form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updatecontact()">Save Status</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </main>
+    </div>

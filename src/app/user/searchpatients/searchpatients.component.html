@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="container" style="margin-top: 100px;">
+        <div class="table-responsive">
+            <div class="container">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="term" class="form-control float-end" placeholder="Search Patient">
+                </div>
+                <table width="100%" class="content-table">
+                    <thead>
+                      <tr>
+                        <th>Patient ID</th>
+                        <th>Patient Age</th>
+                        <th>Patient Gender</th>
+                        <th>Patient Barangay</th>
+                        <th>Patient Date</th>
+                        <th>Patient Status</th>
+                        <!-- <th>Action</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let p of pat | filter:term | paginate: { id: 'listing_pagination',
+                                        itemsPerPage: 10,
+                                        currentPage: pages,
+                                        totalItems: totalRec}; let i = index">
+                      <!-- <tr *ngFor="let p of pat | filter:term; let i = index;"> -->
+                        <td style="transform: uppercase;">{{ p?.p_id }}</td>
+                        <td style="transform: uppercase;">{{ p?.p_age }}</td>
+                        <td style="transform: uppercase;">{{ p?.p_gender }}</td>
+                        <td style="transform: uppercase;">{{ p?.p_barangay }}</td>
+                        <td style="transform: uppercase;">{{ p?.p_date }}</td>
+                        <td style="transform: uppercase;">{{ p?.c_status }}</td>
+                        <!-- <td style="display: flex; justify-content: space-between;"> -->
+                          <!-- <button  class="btn-recover" (click)="showedit(i)" data-toggle="modal" data-target="#edit"><i></i>Recover</button>
+                                          <button  class="btn-death" (click)="showedit(i)" data-toggle="modal" data-target="#edit1"><i></i>Death</button>
+                                          <button  class="btn-show" (click)="showedit(i)" data-toggle="modal" data-target="#show"><i></i>View</button> -->
+                          <!-- <div class="dropdown dropleft">
+                            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                              aria-expanded="false">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path
+                                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                              </svg>
+                            </button> -->
+                            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" (click)="showedit(i)" data-toggle="modal"
+                                data-target="#positive">Positive</a>
+                              <a class="dropdown-item" (click)="showedit(i)" data-toggle="modal"
+                                data-target="#recovered">Recover</a>
+                              <a class="dropdown-item" (click)="showedit(i)" data-toggle="modal" data-target="#death">Death</a>
+                              <a class="dropdown-item" (click)="showedit(i)" data-toggle="modal" data-target="#show">View</a>
+                            </div> -->
+                          <!-- </div> -->
+                        <!-- </td> -->
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center;">
+                    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="pages = $event"
+                    [maxSize]="maxSize"
+                    [directionLinks]="directionLinks"
+                    [autoHide]="autoHide"
+                    [responsive]="responsive"
+                    [previousLabel]="labels.previousLabel"
+                    [nextLabel]="labels.nextLabel"
+                    [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                    [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
